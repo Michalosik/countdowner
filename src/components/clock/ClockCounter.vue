@@ -1,22 +1,88 @@
 <template>
   <div class="counter">
     <div class="counter__shadow"></div>
-    <slot />
+    <div
+      v-for="counter in countdowners"
+      :key="counter.id"
+      class="counter__columns"
+    >
+      <h2>{{ counter.title }}</h2>
+      <clock-column
+        v-for="count in counter.counter"
+        :key="count.name"
+        :name="count.name"
+        :value="count.value"
+      >
+      </clock-column>
+    </div>
   </div>
 </template>
 <script>
+import ClockColumn from "./ClockColumn.vue";
 export default {
-  props: ["counters", "countdowners"],
+  components: { ClockColumn },
+  inject: ["countdowners"],
+  props: ["title"],
+  data() {
+    return {};
+  },
+  methods: {},
+  created() {
+    const countdowners = this.countdowners;
+    for (const counter of countdowners) {
+      const splitedDate = counter.timeTo.split("-");
+      const endDate = new Date(splitedDate).getTime();
+      const startDate = Date.now();
+      let differenceInTime = endDate - startDate;
+      const x = setInterval(() => {
+        if (differenceInTime > 0) {
+          let startDate = Date.now();
+          let differenceInTime = endDate - startDate;
+          counter.counter[0].value = Math.floor(
+            differenceInTime / (1000 * 60 * 60 * 24 * 365)
+          );
+          counter.counter[1].value = Math.floor(
+            (differenceInTime % (1000 * 60 * 60 * 24 * 365)) /
+              (1000 * 60 * 60 * 24 * 30)
+          );
+          counter.counter[2].value = Math.floor(
+            (differenceInTime % (1000 * 60 * 60 * 24 * 30)) /
+              (1000 * 60 * 60 * 24)
+          );
+          counter.counter[3].value = Math.floor(
+            (differenceInTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          counter.counter[4].value = Math.floor(
+            (differenceInTime % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          counter.counter[5].value = Math.floor(
+            (differenceInTime % (1000 * 60)) / 1000
+          );
+        } else {
+          clearInterval(x);
+          counter.counter[0].value = "D";
+          counter.counter[1].value = "O";
+          counter.counter[2].value = "N";
+          counter.counter[3].value = "E";
+          counter.counter[4].value = ":";
+          counter.counter[5].value = ")";
+        }
+      }, 1000);
+    }
+  },
 };
 </script>
 <style>
 .counter {
   position: relative;
   display: flex;
+  flex-direction: column;
   padding: 2em;
   align-items: center;
   border-radius: 1rem;
-  background-image: url("https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg");
+  background-image: url("https://pixabay.com/get/g9796fa0860126c5fd2506d5ba6f45b191691ecbb82db607b016d666f0d7f468799c756ab3a56efdd499640c6d85c529cc469d9db950e4f83404e0f9aba30b77352a2340e4a2ec18d07bdaeb28923ab95_1920.jpg");
+  background-size: cover;
+  background-position: center;
   justify-content: center;
 }
 .counter__shadow {
@@ -27,22 +93,9 @@ export default {
   background-color: rgba(3, 0, 48, 0.55);
   z-index: 0;
 }
-.time__column {
+.counter__columns {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: inherit;
   padding: 1rem;
   margin: 1rem;
-  color: #fff;
-  z-index: 1;
-}
-.time__column .time__value {
-  font-size: 5rem;
-  font-weight: bold;
-  border-bottom: 2px solid #fff;
-}
-.time__column .time__name {
-  font-size: 1.5rem;
 }
 </style>

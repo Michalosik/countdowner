@@ -1,10 +1,10 @@
 <template>
   <form>
     <input type="date" v-model="enteredDate" />
-    <p></p>
-    <button @click.prevent="$emit('new-date', enteredDate)">
-      Start CountDown
-    </button>
+    <input type="text" v-model="enteredTitle" />
+    <router-link @click="saveCountdowner" to="/countdowners"
+      >Add Countdowner</router-link
+    >
   </form>
 </template>
 <script>
@@ -12,8 +12,14 @@ export default {
   data() {
     return {
       enteredDate: null,
+      enteredTitle: "",
     };
   },
-  emits: ["new-date"],
+  inject: ["addCountDowner"],
+  methods: {
+    saveCountdowner() {
+      this.addCountDowner(this.enteredDate, this.enteredTitle);
+    },
+  },
 };
 </script>
