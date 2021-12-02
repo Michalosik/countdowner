@@ -7,25 +7,28 @@ import {
 } from 'vue-router'
 
 import App from './App.vue';
-import AddTime from './components/form/AddTime.vue';
-import ClockCounter from './components/clock/ClockCounter.vue';
+import BaseCounter from './components/UI/BaseCounter.vue';
+import CountersList from './components/counters/CountersList.vue';
+import AddCounter from './components/counters/AddCounter.vue';
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [{
             path: '/',
-            component: ClockCounter
+            component: CountersList
         },
         {
             path: '/add',
-            component: AddTime
+            component: AddCounter
         },
         {
             path: '/countdowners',
-            component: ClockCounter
+            component: CountersList
         }
     ],
 })
+
 const app = createApp(App)
+app.component('base-counter', BaseCounter)
 app.use(router)
 app.mount('#app')
