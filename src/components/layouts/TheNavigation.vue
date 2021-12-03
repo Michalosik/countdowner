@@ -16,7 +16,6 @@
 header {
   width: 100%;
   height: 5rem;
-  background-color: #11005c;
 }
 
 nav {
@@ -40,9 +39,9 @@ li {
 a {
   text-decoration: none;
   background: transparent;
-  border: 1px solid transparent;
+  border: 1px solid #00adb5;
   cursor: pointer;
-  color: white;
+  color: #00adb5;
   padding: 0.5rem 1.5rem;
   display: inline-block;
   transition: color 0.3s, border-color, 0.3s, background-color 0.3s;
@@ -51,8 +50,8 @@ a {
 a:hover,
 a:active,
 a.router-link-active {
-  color: #f1a80a;
-  border-color: #f1a80a;
-  background-color: #1a037e;
+  color: #eee;
+  border-color: #eee;
+  background-color: #00adb5;
 }
 </style>
