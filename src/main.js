@@ -12,33 +12,38 @@ import {
     faTrashAlt
 } from '@fortawesome/free-solid-svg-icons';
 import {
+    faPlusCircle
+} from '@fortawesome/free-solid-svg-icons';
+import {
     FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome';
 
 import App from './App.vue';
 import BaseCounter from './components/UI/BaseCounter.vue';
-import CountersList from './components/counters/CountersList.vue';
-import AddCounter from './components/counters/AddCounter.vue';
+import BaseButton from './components/UI/BaseButton.vue';
+import TheCountdowners from './components/counters/TheCountdowners.vue';
+import AddCountdowner from './components/counters/AddCountdowner.vue';
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [{
             path: '/',
-            component: CountersList
+            component: TheCountdowners
         },
         {
             path: '/add',
-            component: AddCounter
+            component: AddCountdowner
         },
         {
             path: '/countdowners',
-            component: CountersList
+            component: TheCountdowners
         }
     ],
 })
-library.add(faTrashAlt)
+library.add(faTrashAlt, faPlusCircle)
 const app = createApp(App)
 app.component('base-counter', BaseCounter)
+app.component('base-button', BaseButton)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(router)
 app.mount('#app')

@@ -1,17 +1,16 @@
 <template>
   <the-header></the-header>
-  <the-navigation></the-navigation>
+  <!-- <the-navigation></the-navigation> -->
   <main>
-    <the-countdowners></the-countdowners>
+    <router-view></router-view>
   </main>
 </template>
 <script>
-import TheNavigation from "./components/layouts/TheNavigation.vue";
-import TheCountdowners from "./components/counters/TheCountdowners.vue";
+// import TheNavigation from "./components/layouts/TheNavigation.vue";
 import TheHeader from "./components/layouts/TheHeader.vue";
 
 export default {
-  components: { TheNavigation, TheCountdowners, TheHeader },
+  components: { TheHeader },
 };
 </script>
 <style>
@@ -28,7 +27,9 @@ body {
 }
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .sr-only {
   visibility: hidden;

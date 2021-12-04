@@ -40,6 +40,7 @@ a {
   text-decoration: none;
   background: transparent;
   border: 1px solid #00adb5;
+  border-radius: 1rem;
   cursor: pointer;
   color: #00adb5;
   padding: 0.5rem 1.5rem;

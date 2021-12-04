@@ -5,7 +5,6 @@
       :key="countdowner.id"
       :title="countdowner.title"
       :endTime="countdowner.endTime"
-      :countdowner="countdowner"
       :style="{ backgroundImage: 'url(' + countdowner.url + ')' }"
     ></counter-clock>
   </div>
@@ -20,6 +19,7 @@ export default {
 <style scoped>
 .countdowners__wrapper {
   display: flex;
+  padding: 0 4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;

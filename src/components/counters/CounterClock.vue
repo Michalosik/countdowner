@@ -36,7 +36,7 @@
       </div>
     </template>
     <template #controls>
-      <button class="counter__remove-btn">
+      <button @click="removeCountdowner(id)" class="counter__remove-btn">
         <span class="sr-only">Remove</span>
         <font-awesome-icon
           icon="trash-alt"
@@ -49,7 +49,7 @@
 </template>
 <script>
 export default {
-  props: ["countdowner", "title"],
+  props: ["title", "endTime"],
   data() {
     return {
       year: 0,
@@ -58,14 +58,14 @@ export default {
       hour: 0,
       minute: 0,
       second: 0,
-      countdownerProp: this.countdowner,
     };
   },
+  inject: ["removeCountdowner"],
   methods: {
     startCountDown() {
       const x = setInterval(() => {
         const startDate = new Date().getTime();
-        const differenceInTime = this.countdownerProp.endTime - startDate;
+        const differenceInTime = this.endTime - startDate;
         this.year = Math.floor(differenceInTime / (1000 * 60 * 60 * 24 * 365));
         this.month = Math.floor(
           (differenceInTime % (1000 * 60 * 60 * 24 * 365)) /
@@ -95,6 +95,7 @@ export default {
       }, 1000);
     },
   },
+
   created() {
     this.startCountDown();
   },
