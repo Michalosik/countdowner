@@ -39,7 +39,7 @@ export default {
         endTime: endTime,
         url: url,
       };
-      this.countdowners.push(newCountdowner);
+      this.countdowners.unshift(newCountdowner);
       this.updateLocalStorage();
     },
     removeCountdowner(id) {

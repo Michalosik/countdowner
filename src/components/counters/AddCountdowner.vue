@@ -1,6 +1,9 @@
 <template>
   <div class="form__wrapper">
-    <form @submit.prevent="saveCountdowner">
+    <form>
+      <div v-if="formIsValid" class="alert">
+        <p>Please fill all fields to see how long you have to wait!</p>
+      </div>
       <div>
         <label for="date">Date to:</label>
         <input id="date" type="datetime-local" v-model="enteredDate" />
@@ -13,7 +16,9 @@
         <label for="url">Background img URL:</label>
         <input type="text" v-model="enteredURL" />
       </div>
-      <base-button @click="$router.push('countdowners')">Add This!</base-button>
+      <base-button type="button" @click="saveCountdowner"
+        >Add This!</base-button
+      >
       <button @click="toggleFormVisibility" class="close-btn" type="button">
         <span aria-hidden="false" class="sr-only">Close</span
         ><span aria-hidden="true">X</span>
@@ -28,20 +33,37 @@ export default {
       enteredDate: null,
       enteredTitle: "",
       enteredURL: "",
+      formIsValid: false,
     };
   },
   inject: ["addCountdowner", "toggleFormVisibility"],
   methods: {
     saveCountdowner() {
-      const dateToSubmit = new Date(this.enteredDate).getTime();
-      this.addCountdowner(dateToSubmit, this.enteredTitle, this.enteredURL);
+      const date = this.enteredDate;
+      const title = this.enteredTitle;
+      const url = this.enteredURL;
+      if ((date == null || title.trim() === "" || url.trim() === "")) {
+        this.formIsValid = true;
+      } else {
+        const dateToSubmit = new Date(this.enteredDate).getTime();
+        this.addCountdowner(dateToSubmit, this.enteredTitle, this.enteredURL);
+        this.toggleFormVisibility();
+      }
     },
   },
 };
 </script>
 <style scoped>
+.alert {
+  padding: 1rem;
+  color: #eee;
+  font-weight: bold;
+  background-color: red;
+  border-radius: 1rem;
+}
 .form__wrapper {
-  position: absolute;
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;

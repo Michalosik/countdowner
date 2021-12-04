@@ -1,5 +1,5 @@
 <template>
-  <div class="countdowners__wrapper">
+  <div v-if="countdowners.length > 0" class="countdowners__wrapper">
     <counter-clock
       v-for="countdowner in countdowners"
       :key="countdowner.id"
@@ -7,6 +7,9 @@
       :endTime="countdowner.endTime"
       :style="{ backgroundImage: 'url(' + countdowner.url + ')' }"
     ></counter-clock>
+  </div>
+  <div v-else class="countdowners__wrapper">
+    <p>There are no timers set, use this button with white cross to add one!</p>
   </div>
 </template>
 <script>
@@ -23,6 +26,9 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+p {
+  font-weight: bold;
 }
 </style>
   
