@@ -1,12 +1,11 @@
 <template>
   <the-header></the-header>
-  <!-- <the-navigation></the-navigation> -->
   <main>
     <router-view></router-view>
   </main>
 </template>
 <script>
-// import TheNavigation from "./components/layouts/TheNavigation.vue";
+
 import TheHeader from "./components/layouts/TheHeader.vue";
 
 export default {

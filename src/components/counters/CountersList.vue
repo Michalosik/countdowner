@@ -27,8 +27,15 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 p {
   font-weight: bold;
+}
+@media only screen and (max-width: 1200px) {
+  .countdowners__wrapper {
+    min-width: 100%;
+    padding: 0;
+  }
 }
 </style>
   

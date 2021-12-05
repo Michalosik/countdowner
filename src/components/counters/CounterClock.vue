@@ -118,23 +118,28 @@ h3::after {
 }
 .time__container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
 .time__column {
   display: flex;
   flex-direction: column;
+  width: 10%;
   align-items: center;
   font-family: inherit;
-  padding: 1.5rem;
-  margin: 2rem;
+  padding: 0.5rem 1.5rem;
+  margin: 0 2rem;
   color: #fff;
   z-index: 1;
 }
 .time__column .time__value {
-  font-size: 5rem;
+  font-size: 3rem;
   border-bottom: 2px solid #fff;
 }
 .time__column .time__name {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .counter__remove-btn {
   border: 1px solid transparent;
@@ -149,5 +154,21 @@ h3::after {
   margin: auto;
   color: #00adb5;
   transition: color 0.4s;
+}
+@media only screen and (min-width: 1200px) {
+  .time__container {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .time__column {
+    padding: 1.5rem;
+    margin: 2rem;
+  }
+  .time__column .time__value {
+    font-size: 5rem;
+  }
+  .time__column .time__name {
+    font-size: 1.5rem;
+  }
 }
 </style>
