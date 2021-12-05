@@ -2,16 +2,16 @@
 
 ## Table of contents
 
-*[Description](#description)
+* [Description](#description)
 
-*[How to use](#how-to-use) 
+* [How to use](#how-to-use) 
 
-*[Installation](#installation)
+* [Installation](#installation)
 
 ## Description
 
 
-CountItDown! is my first app made with use of VueJS. It's simple application that is able to count the time between two dates. You can add as many counters as you want. App saves timers in localstorage of web browser. Try it!
+**CountItDown!** is my first app made with use of VueJS. It's simple application that is able to count the time between two dates. You can add as many counters as you want. App saves timers in localstorage of web browser. Try it!
 
 
 ## How to use
