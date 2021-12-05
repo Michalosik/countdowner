@@ -2,14 +2,15 @@
 
 ## Table of contents
 
-_[Description](#Description)
-_[How to use](#how-to-use) \*[Installation](#installation)
+*[Description](#Description)
+*[How to use](#how-to-use) 
+*[Installation](#installation)
 
 ## Description
 
-```
+
 CountItDown! is my first app made with use of VueJS. It's simple application that is able to count the time between two dates. You can add as many counters as you want. App saves timers in localstorage of web browser. Try it!
-```
+
 
 ## How to use
 
@@ -21,15 +22,15 @@ After installation and launch on server, you should add new counter using the ad
 
 ![How to Add](./readmeImg/add.png)
 
-```
+
 Next, you have to fill the form and add new timer!
-```
+
 ![Form](./readmeImg/form.png)
 
 ### Removing Timer
-```
+
 If you want to remove timer, you can do it by clicking trash icon in right corner of timer.
-```
+
 ![Remove](./readmeImg/timer.png)
 ## Installation
 
@@ -57,6 +58,4 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
