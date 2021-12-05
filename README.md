@@ -1,9 +1,11 @@
-# countItDown
+# countItDown!
 
 ## Table of contents
 
-*[Description](#Description)
+*[Description](#description)
+
 *[How to use](#how-to-use) 
+
 *[Installation](#installation)
 
 ## Description
@@ -16,9 +18,7 @@ CountItDown! is my first app made with use of VueJS. It's simple application tha
 
 ### Adding new Timer
 
-```
 After installation and launch on server, you should add new counter using the add button (white cross in green circle).
-```
 
 ![How to Add](./readmeImg/add.png)
 
